@@ -40,7 +40,7 @@ let answers = [
 ];
 
 // Helper to get localStorage safely
-function getFromLocalStorage(key) {
+export function getFromLocalStorage(key) {
     if (typeof window !== 'undefined') {
         return JSON.parse(localStorage.getItem(key)) || [];
     }
@@ -69,7 +69,8 @@ function generateRandomAnswer() {
     // Add the answer to the used cache
     usedAnswers.push(availableAnswers[randomIndex]);
     setToLocalStorage('usedAnswers', usedAnswers);
-
+    console.log(newAnswer);
+    
     return newAnswer;
 }
 
@@ -115,5 +116,5 @@ export function clearGameData() {
 export function logAnsweredQuestions() {
     let usedAnswers = getFromLocalStorage('usedAnswers');
     console.log("Answered Questions:", usedAnswers);
-    console.log("Unanswered Questions:", answers);
+    console.log("Unanswered Questions:", answerStore);
 }

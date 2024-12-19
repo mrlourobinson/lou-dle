@@ -9,7 +9,7 @@
     
 
 <h1>Lou-dle</h1>
-<!-- <Intro /> -->
+<Intro />
 <Game />
 <Score />
 

@@ -1,9 +1,15 @@
 <script>
-    import { started } from '$lib/stores/GameStore.js'
+    import { started, getFromLocalStorage } from '$lib/stores/GameStore.js'
+
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = today.toLocaleDateString('en-US', options);
 
     function startGame() {
         $started = true;
     }
+
+    let goes = getFromLocalStorage('usedAnswers').length;
 
 </script>
 
@@ -11,9 +17,14 @@
 {#if $started === false}
     <section class="splash">
         <div class="content">
+            <img src='/wordle-icon.svg' alt="logo" />
             <h1>Lou-dle</h1>
-            <h3>Go ahead, play your favourite<br>Lou based Wordle clone.</h3>
+            <p>Get 6 chances to guess a<br>5-letter word based<br>around Lou!</p>
             <button class="button" on:click={() => startGame()}>Play</button>
+            <br><br>
+            <b>{formattedDate}</b><br><br>
+            <p class="reg">No. {goes}</p>
+            <p class="reg">Edited by Lou Robinson</p>
         </div>
     </section>
 {/if}
@@ -23,11 +34,12 @@
         --correct: rgb(137, 189, 137);
         --close: rgb(218, 198, 46);
         --answer-gray: rgb(221, 221, 221);
+        --wordle-icon: '/wordle-icon.svg';
     }
 
     .splash {
         position: absolute;
-        background-color: rgb(226, 226, 226);
+        background-color: #E3E3E1;
         width: 100vw;
         height: 100vh;
         top: 0;
@@ -48,7 +60,7 @@
     
     .content {
         transform: translateY(0px);
-        padding-top: 50px;
+        padding-top: 120px;
         max-width: 400px;
         margin: auto;
         text-align: center;
@@ -58,12 +70,34 @@
         animation: jitter .45s linear; /* Flashing animation */
     }
 
+    .content p {
+        font-size: 1.8em;
+        font-weight: 200;
+    }
+
+    .reg {
+        font-size: 1.1em !important;
+        margin: 0;
+    }
+
+    .logo {
+        height: 64px;
+        margin-bottom: 16px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
     h1 {
         font-family: "Roboto Slab", serif;
         font-optical-sizing: auto;
         font-weight: 800;
         font-style: normal;
         text-align: center;
+        font-size: 3em;
         margin: 15px;
     }
 

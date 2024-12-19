@@ -274,6 +274,7 @@
     #ENTER, #DEL {
         width: 90px;
         background-color: rgb(143, 141, 141);
+        font-size: 75%;
     }
 
     .button:hover {
