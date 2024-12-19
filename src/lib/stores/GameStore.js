@@ -23,11 +23,11 @@ let answers = [
     'beans',
     'image',
     'mappy',
+    'carto',
     'color',
     'pixel',
     'music',
     'codes',
-    'story',
     'huggy',
     'smile',
     'happy',
@@ -36,7 +36,21 @@ let answers = [
     'lager',
     'farty',
     'funny',
-    'sexxy'
+    'sexxy',
+    'fuzzy',
+    'cooks',
+    'yours',
+    'stink',
+    'pasta',
+    'bread',
+    'beers',
+    'great',
+    'games',
+    'skate',
+    'tacos',
+    'queso',
+    'chips'
+
 ];
 
 // Helper to get localStorage safely
@@ -70,7 +84,7 @@ function generateRandomAnswer() {
     usedAnswers.push(availableAnswers[randomIndex]);
     setToLocalStorage('usedAnswers', usedAnswers);
     console.log(newAnswer);
-    
+
     return newAnswer;
 }
 
